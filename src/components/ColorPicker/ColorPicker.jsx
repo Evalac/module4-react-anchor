@@ -6,15 +6,16 @@ function ColorPicker({ options }) {
   const [activeOptionIndex, setActiveOptionIndex] = useState(0);
 
   const { label } = options[activeOptionIndex];
+  const { color } = options[activeOptionIndex];
 
   const activeColorIndex = index => {
     return index === activeOptionIndex
-      ? css.ColorPicker__options
+      ? `${css.ColorPicker__options} ${css.ColorPicker__option__active}`
       : css.ColorPicker__option;
   };
 
   return (
-    <div className={css.ColorPicker}>
+    <div className={css.ColorPicker} style={{ backgroundColor: color }}>
       <h2 className={css.ColorPicker__title}>ColorPicker</h2>
       <p>Колір: {label}</p>
       <div className={css.ColorPicker__container}>
