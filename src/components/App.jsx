@@ -1,6 +1,7 @@
 import css from './App.module.css';
 import { SignUpForm } from './SignUpForm/SignUpForm';
 import { ColorPicker } from './ColorPicker/ColorPicker';
+import { Counter } from './Counter/Counter';
 
 export const App = () => {
   const colorData = [
@@ -18,6 +19,9 @@ export const App = () => {
       <SignUpForm />
       <div style={{ marginTop: 30 }}>
         <ColorPicker options={colorData} />
+      </div>
+      <div style={{ marginTop: 30 }}>
+        <Counter />
       </div>
     </div>
   );
