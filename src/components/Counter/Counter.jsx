@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Counter(params) {
   const [initValueA, setValueA] = useState(0);
@@ -11,6 +11,12 @@ function Counter(params) {
   const incrementValueB = () => {
     setValueB(prevState => prevState + 1);
   };
+
+  useEffect(() => {
+    console.log('запустився useEfect' + Date.now());
+    const totalClik = initValueA + initValueB;
+    document.title = `Всього клікнули ${totalClik}`;
+  }, [initValueA, initValueB]);
 
   return (
     <div>

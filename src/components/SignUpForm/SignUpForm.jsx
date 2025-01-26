@@ -1,8 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const useLocalStorage = (key, defaultValue) => {
+  // це кастомний хук для оновлення із локалсторедж
+  const [state, setState] = useState(() => {
+    return JSON.parse(localStorage.getItem(key)) ?? defaultValue; // треба тут викликати анонімну функцію щоб покращувати продуктивність, буде спрацьовувати тільки при першому рендері/ так бі спрацьовувала при кожній зміні
+  });
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(state));
+  }, [key, state]);
+  // console.log([state, setState]);
+
+  return [state, setState];
+};
 
 function SignUpForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useLocalStorage('Email', '');
+  const [password, setPassword] = useLocalStorage('Password', '');
 
   const onChangeForm = e => {
     const { name, value } = e.target;
@@ -21,8 +34,17 @@ function SignUpForm() {
     }
   };
 
+  // useEffect(() => {
+  //   localStorage.setItem('Email', JSON.stringify(email));
+  // }, [email]);
+
+  // useEffect(() => {
+  //   localStorage.setItem('Password', JSON.stringify(password));
+  // }, [password]);
+
   const onSubmitForm = e => {
     e.preventDefault();
+
     const valueForm = {
       email: email,
       password: password,

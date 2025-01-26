@@ -1,6 +1,6 @@
 import css from './ColorPicker.module.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function ColorPicker({ options }) {
   const [activeOptionIndex, setActiveOptionIndex] = useState(0);
