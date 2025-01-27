@@ -34,14 +34,6 @@ function SignUpForm() {
     }
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem('Email', JSON.stringify(email));
-  // }, [email]);
-
-  // useEffect(() => {
-  //   localStorage.setItem('Password', JSON.stringify(password));
-  // }, [password]);
-
   const onSubmitForm = e => {
     e.preventDefault();
 
