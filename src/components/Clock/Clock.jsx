@@ -14,7 +14,7 @@ function Clock(params) {
 
   const stop = () => clearInterval(intervalID.current);
 
-  console.log(intervalID);
+  // console.log(intervalID);
 
   return (
     <div>

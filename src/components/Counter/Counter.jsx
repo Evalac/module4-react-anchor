@@ -13,7 +13,7 @@ function Counter(params) {
   };
 
   useEffect(() => {
-    console.log('запустився useEfect' + Date.now());
+    // console.log('запустився useEfect' + Date.now());
     const totalClik = initValueA + initValueB;
     document.title = `Всього клікнули ${totalClik}`;
   }, [initValueA, initValueB]);
