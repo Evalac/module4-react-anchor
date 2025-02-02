@@ -16,6 +16,7 @@ function PokemonInfo({ pokemonName }) {
 
   useEffect(() => {
     if (pokemonName === '') {
+      //щоб не було застосування юзефекта при першому рендері треба робити перевірку
       return;
     }
     setStatus(Status.PENDING);

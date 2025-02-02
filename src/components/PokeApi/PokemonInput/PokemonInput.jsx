@@ -21,7 +21,11 @@ function PokemonInput({ onSubmit }) {
   return (
     <div>
       <form onSubmit={submitPoke}>
-        <input autoComplete="on" value={pokemonName} onChange={onChangeInput} />
+        <input
+          autoComplete="true"
+          value={pokemonName}
+          onChange={onChangeInput}
+        />
         <button>Пошук</button>
       </form>
     </div>
