@@ -3,7 +3,8 @@ import { SignUpForm } from './SignUpForm/SignUpForm';
 import { ColorPicker } from './ColorPicker/ColorPicker';
 import { Counter } from './Counter/Counter';
 import { Clock } from './Clock/Clock';
-import { Test } from './PokeApi/Test';
+import { PokemonMainApp } from './PokeApi/PokemonMainApp';
+import { SkipEffectFirstRender } from './SkipEffectFirstRender/SkipEffectFirstRender';
 
 export const App = () => {
   const colorData = [
@@ -28,8 +29,11 @@ export const App = () => {
       <div style={{ marginTop: 30 }}>
         <Clock />
       </div>
+      {/* <div style={{ marginTop: 30 }}>
+        <SkipEffectFirstRender />
+      </div> */}
       <div style={{ marginTop: 30 }}>
-        <Test />
+        <PokemonMainApp />
       </div>
     </div>
   );
