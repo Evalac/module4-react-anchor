@@ -1,16 +1,50 @@
+import { useState, useEffect } from 'react';
+import * as PokemonApi from '../Services/PokemonApi';
+import { PokemonView } from '../PokemonView/PokemonView';
+
+const Status = {
+  IDLE: 'idle', //в режимі очікування
+  PENDING: 'pending', //очікується виконання
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+};
+
 function PokemonInfo({ pokemonName }) {
-  //   const [dataPoke, setRespPoke] = useState([]);
-  //   const fetchPoke = async () => {
-  //     const BASE_URL = `https://pokeapi.co/api/v2/pokemon`;
-  //     try {
-  //       const respPoke = await fetch(`${BASE_URL}/${pokemonName}`);
-  //       const reqPoke = await respPoke.json();
-  //       return reqPoke;
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  // fetchPoke().then(data => setRespPoke(data));
+  const [pokemon, setPokemon] = useState(null);
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState(Status.IDLE);
+
+  useEffect(() => {
+    if (pokemonName === '') {
+      return;
+    }
+    setStatus(Status.PENDING);
+
+    PokemonApi.fetchPokemon(pokemonName)
+      .then(pokemon => {
+        setPokemon(pokemon);
+        setStatus(Status.RESOLVED);
+      })
+      .catch(error => {
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  }, [pokemonName]);
+
+  if (status === Status.IDLE) {
+    return <p>Введіть імʼя покемону</p>;
+  }
+  if (status === Status.PENDING) {
+    return <p>Завантажується покемон...</p>;
+  }
+
+  if (status === Status.RESOLVED) {
+    return <PokemonView pokemonInfo={pokemon} />;
+  }
+
+  if (status === Status.REJECTED) {
+    return <p>{error.message}</p>;
+  }
 }
 
 export { PokemonInfo };

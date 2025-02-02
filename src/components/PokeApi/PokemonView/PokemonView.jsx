@@ -1,5 +1,5 @@
-function PokemonView({ data }) {
-  console.log(data);
+function PokemonView({ pokemonInfo }) {
+  console.log(pokemonInfo);
 
   return <ul></ul>;
 }
