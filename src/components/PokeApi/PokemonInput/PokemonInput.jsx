@@ -1,15 +1,21 @@
 import { useState } from 'react';
 
-function PokemonInput({ handleFormSubmit }) {
+function PokemonInput({ onSubmit }) {
   const [pokemonName, setPokemonName] = useState('');
 
   const onChangeInput = e => {
-    setPokemonName(e.target.value);
+    setPokemonName(e.target.value.toLowerCase());
   };
 
   const submitPoke = e => {
+    if (pokemonName.trim() === '') {
+      e.preventDefault();
+      alert('Введіть імʼя покемона');
+      return;
+    }
     e.preventDefault();
-    handleFormSubmit(pokemonName);
+    onSubmit(pokemonName);
+    setPokemonName('');
   };
 
   return (
