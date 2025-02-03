@@ -6,6 +6,7 @@ import { Clock } from './Clock/Clock';
 import { PokemonMainApp } from './PokeApi/PokemonMainApp';
 import { SkipEffectFirstRender } from './SkipEffectFirstRender/SkipEffectFirstRender';
 import { CounterHooks } from './CoutnerHooks/CoutnerHooks';
+import { FriendList } from './UserMenu/Friends';
 
 export const App = () => {
   const colorData = [
@@ -39,6 +40,10 @@ export const App = () => {
 
       <div style={{ marginTop: 30 }}>
         <CounterHooks />
+      </div>
+
+      <div style={{ marginTop: 30 }}>
+        <FriendList />
       </div>
     </div>
   );

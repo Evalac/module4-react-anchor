@@ -5,10 +5,10 @@ function counterReducer(state, action) {
 
   switch (action.type) {
     case 'increment':
-      return state + action.playload;
+      return { ...state, count: state.count + action.playload };
 
     case 'decrement':
-      return state - action.playload;
+      return { ...state, count: state.count - action.playload };
 
     default:
       return state;
@@ -16,11 +16,11 @@ function counterReducer(state, action) {
 }
 
 function CounterHooks(params) {
-  const [count, dispatch] = useReducer(counterReducer, 0);
+  const [state, dispatch] = useReducer(counterReducer, { count: 0 });
 
   return (
     <div>
-      <p>Кількість кліків: {count}</p>
+      <p>Кількість кліків: {state.count}</p>
       <button
         type="button"
         onClick={() => {
