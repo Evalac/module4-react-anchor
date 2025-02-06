@@ -1,10 +1,10 @@
-import css from './App.module.css';
+// import css from './App.module.css';
 import { SignUpForm } from './SignUpForm/SignUpForm';
 import { ColorPicker } from './ColorPicker/ColorPicker';
 import { Counter } from './Counter/Counter';
 import { Clock } from './Clock/Clock';
 import { PokemonMainApp } from './PokeApi/PokemonMainApp';
-import { SkipEffectFirstRender } from './SkipEffectFirstRender/SkipEffectFirstRender';
+// import { SkipEffectFirstRender } from './SkipEffectFirstRender/SkipEffectFirstRender';
 import { CounterHooks } from './CoutnerHooks/CoutnerHooks';
 import { FriendList } from './UserMenu/Friends';
 
